@@ -1,9 +1,3 @@
-TEST_INPUTS = {
-    '1122': 3,
-    '1111': 4,
-    '1234': 0,
-    '91212129': 9
-}
 INPUT_DATA = (
     '32941994713271959948248321975648598766826381888897682988942438326656546814'
     '12886862234525991553276578641265589959178414218389329361496673991614673626'
@@ -34,25 +28,37 @@ INPUT_DATA = (
     '44373643346449628721961569734197313171516676891614982839645463859671357296'
     '3686159214116763'
 )
+TEST_INPUTS_A = {
+    '1122': 3,
+    '1111': 4,
+    '1234': 0,
+    '91212129': 9
+}
+TEST_INPUTS_B = {
+    '1212': 6,
+    '1221': 0,
+    '123425': 4,
+    '123123': 12,
+    '12131415': 4
+}
 
 
-def calc_sum(data):
+def calc_sum(data, next_idx_fn):
     sum = 0
 
     for idx, val in enumerate(data):
         val = int(val)
-        if val == _next_value(data, idx):
+
+        next_idx = next_idx_fn(idx, len(data))
+        next_val = int(data[next_idx])
+
+        if val == next_val:
             sum += val
 
     return sum
 
 
-def _next_value(data, idx):
-    next_idx = _next_idx(idx, len(data))
-    return int(data[next_idx])
-
-
-def _next_idx(idx, data_len):
+def next_idx_a(idx, data_len):
     next_idx = idx + 1
     if next_idx == data_len:
         return 0
@@ -60,10 +66,12 @@ def _next_idx(idx, data_len):
 
 
 def main():
-    for data, value in TEST_INPUTS.items():
-        assert calc_sum(data) == value
+    # part a
+    for data, value in TEST_INPUTS_A.items():
+        assert calc_sum(data, next_idx_a) == value
 
-    print(calc_sum(INPUT_DATA))
+    part_a_answer = calc_sum(INPUT_DATA, next_idx_a)
+    print('part a: {}'.format(part_a_answer))
 
 
 if __name__ == '__main__':
