@@ -65,14 +65,23 @@ def next_idx_a(idx, data_len):
     return next_idx
 
 
-def main():
-    # part a
-    for data, value in TEST_INPUTS_A.items():
-        assert calc_sum(data, next_idx_a) == value
+def next_idx_b(idx, data_len):
+    next_idx = idx + data_len/2
+    if next_idx >= data_len:
+        return next_idx - data_len
+    return next_idx
 
-    part_a_answer = calc_sum(INPUT_DATA, next_idx_a)
-    print('part a: {}'.format(part_a_answer))
+
+def aoc_01(next_idx_fn, test_inputs, input_data):
+    for data, value in test_inputs.items():
+        assert calc_sum(data, next_idx_fn) == value
+
+    return calc_sum(input_data, next_idx_fn)
 
 
 if __name__ == '__main__':
-    main()
+    part_a_answer = aoc_01(next_idx_a, TEST_INPUTS_A, INPUT_DATA)
+    print('part a: {}'.format(part_a_answer))
+
+    part_b_answer = aoc_01(next_idx_b, TEST_INPUTS_B, INPUT_DATA)
+    print('part b: {}'.format(part_b_answer))
