@@ -1,5 +1,7 @@
 import itertools
 
+import utils
+
 
 TEST_INPUT_A = {
     'aa bb cc dd ee': True,
@@ -41,15 +43,6 @@ def aoc_04(data, check_fns):
     )
 
 
-def read_input(path):
-    with open(path) as f:
-        return [
-            line.strip()
-            for line in f.readlines()
-            if line
-        ]
-
-
 def main():
     part_a_fns = [words_unique]
     part_b_fns = [words_unique, words_not_anagrams]
@@ -60,7 +53,7 @@ def main():
     for phrase, valid in TEST_INPUT_B.items():
         assert passphrase_valid(phrase, part_b_fns) == valid
 
-    input_data = read_input('aoc_04.txt')
+    input_data = utils.get_input_data(4).split('\n')
 
     part_a = aoc_04(input_data, part_a_fns)
     print('part a: {}'.format(part_a))

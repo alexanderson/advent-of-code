@@ -1,3 +1,5 @@
+import utils
+
 TEST_INPUT_A = (
     (5, 1, 9, 5),
     (7, 5, 3),
@@ -37,15 +39,6 @@ def _divide(a, b):
     return a / b
 
 
-def read_input(path):
-    with open(path) as f:
-        return [
-            _parse_row(row)
-            for row in f.readlines()
-            if row
-        ]
-
-
 def _parse_row(row):
     return [
         int(item)
@@ -57,7 +50,8 @@ def main():
     assert checksum_a(TEST_INPUT_A) == 18
     assert checksum_b(TEST_INPUT_B) == 9
 
-    input_data = read_input('aoc_02.tsv')
+    input_data = utils.get_input_data(2)
+    input_data = [_parse_row(row) for row in input_data.split('\n')]
 
     part_a = checksum_a(input_data)
     print('part a: {}'.format(part_a))

@@ -1,3 +1,6 @@
+import utils
+
+
 TEST_INPUTS_A = {
     '1122': 3,
     '1111': 4,
@@ -50,8 +53,7 @@ def aoc_01(next_idx_fn, test_inputs, input_data):
 
 
 if __name__ == '__main__':
-    with open('aoc_01.txt') as input_file:
-        input_data = input_file.read().strip()
+    input_data = utils.get_input_data(1)
 
     part_a_answer = aoc_01(next_idx_a, TEST_INPUTS_A, input_data)
     print('part a: {}'.format(part_a_answer))

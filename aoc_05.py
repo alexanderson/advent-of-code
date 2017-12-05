@@ -1,3 +1,6 @@
+import utils
+
+
 TEST_INPUT = (0, 3, 0, 1, -3)
 
 
@@ -27,20 +30,12 @@ def aoc_05(data, jump_modifier=increment_jumps):
         total_jumps += 1
 
 
-def read_input(path):
-    with open(path) as f:
-        return [
-            int(line.strip())
-            for line in f.readlines()
-            if line
-        ]
-
-
 def main():
     assert aoc_05(TEST_INPUT) == 5
     assert aoc_05(TEST_INPUT, decrement_large_jumps) == 10
 
-    input_data = read_input('aoc_05.txt')
+    input_data = utils.get_input_data(5)
+    input_data = [int(line) for line in input_data.split('\n')]
 
     part_a = aoc_05(input_data)
     print('part a: {}'.format(part_a))
