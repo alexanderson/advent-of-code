@@ -1,5 +1,6 @@
 import utils
 
+
 TEST_INPUT_A = (
     (5, 1, 9, 5),
     (7, 5, 3),
@@ -47,8 +48,7 @@ def _parse_row(row):
 
 
 def main():
-    assert checksum_a(TEST_INPUT_A) == 18
-    assert checksum_b(TEST_INPUT_B) == 9
+    test()
 
     input_data = utils.get_input_data(2)
     input_data = [_parse_row(row) for row in input_data.split('\n')]
@@ -58,6 +58,11 @@ def main():
 
     part_b = checksum_b(input_data)
     print('part b: {}'.format(part_b))
+
+
+def test():
+    assert checksum_a(TEST_INPUT_A) == 18
+    assert checksum_b(TEST_INPUT_B) == 9
 
 
 if __name__ == '__main__':

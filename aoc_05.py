@@ -14,7 +14,7 @@ def decrement_large_jumps(jump):
     return jump + 1
 
 
-def aoc_05(data, jump_modifier=increment_jumps):
+def steps_til_exit(data, jump_modifier=increment_jumps):
     data = list(data)
     size = len(data)
     position = 0
@@ -31,17 +31,21 @@ def aoc_05(data, jump_modifier=increment_jumps):
 
 
 def main():
-    assert aoc_05(TEST_INPUT) == 5
-    assert aoc_05(TEST_INPUT, decrement_large_jumps) == 10
+    test()
 
     input_data = utils.get_input_data(5)
     input_data = [int(line) for line in input_data.split('\n')]
 
-    part_a = aoc_05(input_data)
+    part_a = steps_til_exit(input_data)
     print('part a: {}'.format(part_a))
 
-    part_b = aoc_05(input_data, decrement_large_jumps)
+    part_b = steps_til_exit(input_data, decrement_large_jumps)
     print('part b: {}'.format(part_b))
+
+
+def test():
+    assert steps_til_exit(TEST_INPUT) == 5
+    assert steps_til_exit(TEST_INPUT, decrement_large_jumps) == 10
 
 
 if __name__ == '__main__':
