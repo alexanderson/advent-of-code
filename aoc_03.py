@@ -35,10 +35,10 @@ def manhattan_dist(location):
     # largest number on that layer
     layer_max = ((2 * layer) + 1) ** 2
 
-    # number of steps, backwards/clockwise, from bottom left corner of layer
+    # number of steps, backwards/clockwise, from bottom right corner of layer
     diff = layer_max - location
 
-    # number of clockwise steps from nearest corner
+    # number of clockwise steps from nearest corner (looking anticlockwise)
     steps_from_corner = diff % (2 * layer)
 
     if steps_from_corner < layer:
