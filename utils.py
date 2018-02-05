@@ -1,7 +1,7 @@
 import os
 
 
-def get_input_data(day):
+def get_input_data(day, strip=True):
     """Read input file for puzzle for given day.
 
     :param day: int, day of puzzle.
@@ -10,7 +10,12 @@ def get_input_data(day):
     path = _get_path(day)
 
     with open(path) as data_file:
-        return data_file.read().strip()
+        data = data_file.read()
+
+        if strip:
+            data = data.strip()
+
+        return data
 
 
 def _get_path(day):
