@@ -1,3 +1,4 @@
-# Advent of Code (2017)
+# Advent of Code
 
-My solutions to the 2017 edition of [Advent of Code](http://adventofcode.com/).
+My solutions to [Advent of Code](http://adventofcode.com/).
+
