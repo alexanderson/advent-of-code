@@ -41,7 +41,7 @@ def get_input():
     with open('input.txt') as input_file:
         data = input_file.read()
     lines = data.split('\n')
-    return filter(None, lines)
+    return list(filter(None, lines))
 
 
 if __name__ == '__main__':
